@@ -1,0 +1,83 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('/fonts/Raleway-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Raleway Variable';
+	src: url('/fonts/Raleway-VariableFont_wght.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex Mono';
+	src: url('/fonts/IBMPlexMono-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex Mono';
+	src: url('/fonts/IBMPlexMono-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex Mono';
+	src: url('/fonts/IBMPlexMono-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--main-font: 'Raleway Variable', 'Raleway', sans-serif;
+	--ascii-font: 'IBM Plex Mono', monospace;
+	--page-background: #fafafa;
+	--text: #1a1a1a;
+	--text-muted: #6b6b6b;
+	--text-soft: #4a4a4a;
+	--border: #e8e8e8;
+	--border-soft: #ececec;
+	--border-header: #e4e4e4;
+	--card-bg: #fff;
+	--accent: #2d4a8a;
+	--accent-burgundy: #800020;
+	--success: #2f6b4f;
+	--danger: #8b2e2e;
+	--warn: #8a6a20;
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: auto;
+	max-width: 100%;
+	min-height: 100%;
+	background-color: var(--page-background);
+}
+
+body {
+	font-family: var(--main-font);
+	background-color: var(--page-background);
+	color: var(--text);
+	min-height: 100vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+	font-weight: 300;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
