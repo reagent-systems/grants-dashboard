@@ -4,7 +4,7 @@ import { requireAgent } from '$lib/server/auth';
 import { db } from '$lib/server/db';
 import { actions, capabilities, auditLog, settings } from '$lib/server/db/schema';
 import { eq, and, gte, inArray } from 'drizzle-orm';
-import { MAX_JOB_USD } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { brokerRegistry } from '$lib/server/broker';
 import { redact } from '$lib/server/vault';
 
@@ -69,9 +69,10 @@ export const POST: RequestHandler = async ({ request }) => {
 	let needsApproval = cap.tier === 2;
 	let reason = cap.tier === 2 ? 'tier-2 action requires operator approval' : '';
 
-	if (estimatedUsd > Number(MAX_JOB_USD)) {
+	const maxJobUsd = Number(env.MAX_JOB_USD ?? '15');
+	if (estimatedUsd > maxJobUsd) {
 		needsApproval = true;
-		reason = `estimated $${estimatedUsd} exceeds per-job cap $${MAX_JOB_USD}`;
+		reason = `estimated $${estimatedUsd} exceeds per-job cap $${maxJobUsd}`;
 	}
 
 	// Deterministic monthly training-budget cap (the spend-tracked brake).
